@@ -1,0 +1,21 @@
+<%= render partial: 'layouts/navbar' %>
+<div class="container text-center">
+  <% if flash[:error] %>
+    <div class="alert alert-danger" role="alert">
+      <div id="error_explanation">
+        <%= flash[:error] %>
+      </div>
+    </div>
+  <% end %>
+
+  <h1>Welcome <%= @user.name%></h1>
+  <br />
+  <div class="list-group">
+    <%= link_to "Rate a recipe", new_rating_path, :class => "list-group-item list-group-item-action"%>
+    <%= link_to "Comment a recipe", new_comment_path, :class => "list-group-item list-group-item-action"%>
+    <% if @user.admin %>
+      <%= link_to "New recipe", new_recipe_path, :class => "list-group-item list-group-item-action"%>
+      <%= link_to "New category", new_category_path, :class => "list-group-item list-group-item-action"%>
+    <% end %>
+  </div>
+</div>
