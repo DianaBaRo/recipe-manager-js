@@ -15,7 +15,7 @@
 //= require turbolinks
 
 // The require_tree directive tells sprockets to include all JS files in the same folder that application.js is located
-//= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require_tree .
