@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      redirect_to recipe_path(@comment.recipe)
+      render json: @comment, status: 201
+      #redirect_to recipe_path(@comment.recipe)
     else
       render :new
     end
@@ -20,6 +21,10 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find_by_id(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @comment }
+    end
   end
 
   def index
