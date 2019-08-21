@@ -6,7 +6,7 @@
 <div class="container">
   <%= render partial: 'layouts/errors', locals: {object: @comment}  %>
 
-  <%= form_for([@comment.recipe, @comment]) do |f|%>
+  <%= form_for [@comment.recipe, @comment], :html => {:id => 'new-comment'} do |f|%>
     <% if params[:recipe_id] %>
       <%= f.hidden_field :recipe_id %>
     <% else %>
@@ -26,4 +26,11 @@
     <button type=f.submit class="btn btn-primary">Comment recipe</button>
 
   <% end %>
+
+  <br /><br />
+	  
+  <div class="container text-center" id="commentResult">
+    <%-# Showing new comment created using Ajax -%>
+  </div>
+
 </div>
