@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
 
       respond_to do |f|
         f.html {render :index} #Render html for the recipe's index erb file
-        f.json {render json: @recipes} #Get JSON representation of all of the recipes
+        f.json {render json: @recipes, each_serializer: SimpleRecipeSerializer} #Get JSON representation of all of the recipes
       end
 
     end
@@ -36,6 +36,10 @@ class RecipesController < ApplicationController
   end
 
   def show
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @recipe, serializer: FullRecipeSerializer }
+    end
   end
 
   def edit 
