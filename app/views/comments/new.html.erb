@@ -3,10 +3,21 @@
   <h1>New comment</h1>
   <br /><br />
 </div>
-<div class="container">
+<% if @recipe %>
+  <div class="container text-center recipeId" data-recipe-id=<%=@recipe.id %>>
+<% else %>
+  <div class="container text-center" >
+<% end %>
   <%= render partial: 'layouts/errors', locals: {object: @comment}  %>
 
-  <%= form_for [@comment.recipe, @comment], :html => {:id => 'new-comment'} do |f|%>
+  <% if @recipe %>
+    <% @id = 'new-nested-comment' %>
+  <% else %>
+     <% @id = 'new-comment' %>
+  <% end %>
+
+    <%= form_for [@comment.recipe, @comment], :html => {:id => @id} do |f|%>
+
     <% if params[:recipe_id] %>
       <%= f.hidden_field :recipe_id %>
     <% else %>
