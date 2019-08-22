@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   get 'newest_recipe' => 'recipes#newest_recipe'
 
   get 'most_popular_user' => 'users#most_popular_user'
+
+  get 'search_recipe' => 'recipes#search_recipe'
 end
