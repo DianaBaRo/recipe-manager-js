@@ -62,6 +62,19 @@ class RecipesController < ApplicationController
     @recipe = Recipe.newest.first
   end
 
+  def search_recipe
+    @users = User.all
+    @categories = Category.all
+
+    if !params[:name].blank? #filtering recipes by name
+      @recipes = Recipe.by_name(params[:name])
+    elsif !params[:user].blank? #filtering recipes by user
+      @recipes = Recipe.by_user(params[:user])
+    else
+      @recipes = Recipe.all
+    end
+  end
+
   private
   def recipe_params
     params.require(:recipe).permit(:name, :cooking_time, :servings, :directions, category_ids: [])
