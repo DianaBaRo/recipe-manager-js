@@ -4,21 +4,10 @@ class RecipesController < ApplicationController
   before_action :set_recipe, except: [:index, :new, :create, :newest_recipe]
   
   def index
-    @users = User.all
-    @categories = Category.all
-
-    if !params[:name].blank? #filtering recipes by name
-      @recipes = Recipe.by_name(params[:name])
-    elsif !params[:user].blank? #filtering recipes by user
-      @recipes = Recipe.by_user(params[:user])
-    else
-      @recipes = Recipe.all
-
-      respond_to do |f|
-        f.html {render :index} #Render html for the recipe's index erb file
-        f.json {render json: @recipes, each_serializer: SimpleRecipeSerializer} #Get JSON representation of all of the recipes
-      end
-
+    @recipes = Recipe.all
+    respond_to do |f|
+      f.html {render :index} #Render html for the recipe's index erb file
+      f.json {render json: @recipes, each_serializer: SimpleRecipeSerializer} #Get JSON representation of all of the recipes
     end
   end
     
