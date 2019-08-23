@@ -4,27 +4,25 @@ class CommentsController < ApplicationController
   def new
     if recipe
       @comment = @recipe.comments.build
+      @id = 'new-nested-comment' #id for the form_for
     else
       @comment = Comment.new
+      @id = 'new-comment' #id for the form_for
     end
   end
 
   def create
     @comment = current_user.comments.build(comment_params)
+  
     if @comment.save
       render json: @comment, status: 201
-      #redirect_to recipe_path(@comment.recipe)
     else
-      render :new
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
   def show
     @comment = Comment.find_by_id(params[:id])
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @comment }
-    end
   end
 
   def index

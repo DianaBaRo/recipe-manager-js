@@ -37,20 +37,32 @@ const NewCommentSubmission = () => {
       const newComment = new Comment(data);
       newComment.formatComment();
     });
+    posting.fail(function(jqXHR, textStatus, errorThrown) {
+      //console.log(jqXHR["responseText"])
+      const message = "*There was an error. Please, select a recipe and add some content to succesfully create a comment.";
+      $("#commentResult").append(message);
+    });
   });
 };
 
 const NewNestedCommentSubmission = () => {
   $(document).on('submit', '#new-nested-comment', function(event) {
+   
     //prevent form from submitting the default way
     event.preventDefault();
     var values = $(this).serialize();
-    let recipeId = $('.recipeId').data('recipe-id');
+    
+    let recipeId = $(this.recipe).attr('data-recipe_id');
+    // let recipeId = $('.recipeId').data('recipe-id');
     var posting = $.post(`/recipes/${recipeId}/comments`, values);
     posting.done(function(data) {
       $('#commentResult').html('');
       const newComment = new Comment(data);
       newComment.formatComment();
+    });
+    posting.fail(function() {
+      const message = "*There was an error. Please, add some content to succesfully create a comment";
+      $("#commentResult").append(message);
     });
   });
 };
