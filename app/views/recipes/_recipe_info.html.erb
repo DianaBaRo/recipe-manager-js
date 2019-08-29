@@ -35,8 +35,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="container" id="commentContainer">
-    <%-# displaying through json  -%>
+  <div class="container">
     <% if not_empty @recipe.comments %>
       <h6><strong><%= link_to "Comments:", recipe_comments_url(@recipe) %></strong></h6>
       <% @recipe.comments.each do |comment| %>
