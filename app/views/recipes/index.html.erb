@@ -1,11 +1,12 @@
 <%= render partial: 'layouts/navbar' %>
 
-<div class="container text-center">
+<div class="container text-center" id="recipe-index">
+  <%-# Div to add recipes index to the DOM -%>
   <h1>Our recipes</h1>
   <%-# Link to render a recipe index page via JavaScript and an Active Model Serialization JSON Backend -%>
   <h5><a href="#" id="all-recipes"><strong>[ Click here to see all our recipes ]</strong></a></h5>
 </div>
 
-<div class="container" id="recipe-index">
-  <%-# Div to add recipes index to the DOM -%>
+<div class="container" id="recipe-show">
+  <%-# Div to add recipe show to the DOM -%>
 </div>
