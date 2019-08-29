@@ -1,5 +1,8 @@
 class RatingSerializer < ActiveModel::Serializer
-  attributes :id, :score
+  attributes :id, :score, :ratingUser
 
-  belongs_to :user, serializer: UserSerializer
+  def ratingUser
+    user = object.user
+    user.name
+  end
 end
