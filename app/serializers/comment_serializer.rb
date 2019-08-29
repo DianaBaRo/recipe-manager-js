@@ -1,7 +1,15 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :content
+  attributes :id, :content, :commentUser, :recipeId
 
-  belongs_to :user, serializer: UserSerializer
-  belongs_to :recipe, serializer: SimpleRecipeSerializer
+  def commentUser
+    user = object.user
+    user.name
+  end
+
+  def recipeId
+    recipe = object.recipe
+    recipe.id
+  end    
+
 end
 
