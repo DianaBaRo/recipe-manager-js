@@ -11,8 +11,8 @@ const NewCommentSubmission = () => {
   $(document).on('submit', "#new-comment", function(event) {
     //prevent form from submitting the default way
     event.preventDefault();
-    var values = $(this).serialize();
-    var posting = $.post(`/comments`, values);
+    const values = $(this).serialize();
+    const posting = $.post(`/comments`, values);
     posting.done(function(data) {
       $('#commentResult').html('');
       //Creating a new comment object in JS
@@ -31,11 +31,11 @@ const NewNestedCommentSubmission = () => {
   $(document).on('submit', '#new-nested-comment', function(event) {
     //prevent form from submitting the default way
     event.preventDefault();
-    var values = $(this).serialize();
+    const values = $(this).serialize();
     
     //let recipeId = $(this.recipe).attr('data-recipe_id');
     let recipeId = $('.recipeId').data('recipe-id');
-    var posting = $.post(`/recipes/${recipeId}/comments`, values);
+    const posting = $.post(`/recipes/${recipeId}/comments`, values);
     posting.done(function(data) {
       $('#commentResult').html('');
       const newComment = new Comment(data);
