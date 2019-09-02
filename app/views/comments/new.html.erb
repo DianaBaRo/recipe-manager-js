@@ -13,7 +13,7 @@
 <% end %>
 
   <%= render partial: 'layouts/errors', locals: {object: @comment}  %>
-
+  <%-# @id is declared in comments#new -%>
   <%= form_for [@comment.recipe, @comment], :html => {:id => @id} do |f|%>
 
     <% if params[:recipe_id] %>
