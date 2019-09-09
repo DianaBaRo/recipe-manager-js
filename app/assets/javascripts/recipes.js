@@ -9,28 +9,28 @@ const SortedRecipes = () => {
   $(document).on('click', "#sorted-recipes", function(e) {
     e.preventDefault();
     fetch(`/recipes.json`)
-      .then(response => response.json())
-      .then(recipes => {
-        recipes.sort(function(a, b) {
-          var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-          var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-         
-          // names must be equal
-          return 0;
-        });
-        recipes.forEach(recipe => {
-          let newRecipe = new Recipe(recipe);
-          newRecipe.formatIndex();
-        });
+    .then(response => response.json())
+    .then(recipes => {
+      recipes.sort(function(a, b) {
+        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
       });
+      $("#recipe-index").html('');
+      recipes.forEach(recipe => {
+        let newRecipe = new Recipe(recipe);
+        newRecipe.formatIndex();
+      });
+    });
   });
-}
+};
   
   
 const RecipesOnClick = () => {
@@ -46,6 +46,7 @@ const getRecipes = () => {
   fetch(`/recipes.json`)
   .then(response => response.json())
   .then(recipes => {
+    $("#recipe-index").html('');
     recipes.forEach(recipe => {
       //Use constructor function to create recipe objects
       let newRecipe = new Recipe(recipe);
