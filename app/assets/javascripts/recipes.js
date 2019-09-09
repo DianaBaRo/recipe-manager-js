@@ -170,6 +170,7 @@ class Recipe {
       <h6>Comments:</h6><br />
     </div>
     `;
+    $("#links-to-indexes").html('');
     $("#recipe-index").html('');
     $("#recipe-show").html(html);
   };
