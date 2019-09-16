@@ -10,7 +10,7 @@ The app provides a database and web interface for users to:
 * User inputs are validated.
 * The app include an ActiveRecord scope method to get the newest recipe that can be seen in its own URL, in this case: http://localhost:3000/newest_recipe.
 
-RecipeManager was built with [Ruby on Rails](https://rubyonrails.org/) and [Bootstrap](https://getbootstrap.com/).
+RecipeManager was built with [Ruby on Rails](https://rubyonrails.org/) and [Bootstrap](https://getbootstrap.com/). This app has dynamic features using JavaScript and a JSON API.
 
 
 ## Getting Started
