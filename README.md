@@ -12,6 +12,8 @@ The app provides a database and web interface for users to:
 
 RecipeManager was built with [Ruby on Rails](https://rubyonrails.org/) and [Bootstrap](https://getbootstrap.com/). This app has dynamic features using JavaScript and a JSON API.
 
+Link to my [blog post](http://carolinabadas.com/rails-with-javascript-recipe-manager/).
+
 
 ## Getting Started
 
